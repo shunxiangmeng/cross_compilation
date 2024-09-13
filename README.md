@@ -35,3 +35,9 @@ make
 make install
 ```
 
+# curl
+1. no ssl
+
+```
+./configure --host=arm-linux CC=arm-buildroot-linux-uclibcgnueabihf-gcc --without-ssl --without-zlib --prefix=/home/test/opensource/curl-8.2.1/output/arm-buildroot-linux-uclibcgnueabihf --enable-static
+```
