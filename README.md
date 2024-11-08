@@ -1,6 +1,11 @@
 # cross_compilation
 cross compilation third lib
 
+# zlib
+1. 下载地址： https://www.zlib.net/
+
+CC=arm-linux-gnueabihf-gcc ./configure --prefix=/path/to/install/arm/zlib
+
 # tcpdump
 tcpdump 依赖于 libpcap，需要为目标平台交叉编译 libpcap
 
@@ -35,13 +40,6 @@ make
 make install
 ```
 
-# curl
-1. no ssl
-
-```
-./configure --host=arm-linux CC=arm-buildroot-linux-uclibcgnueabihf-gcc --without-ssl --without-zlib --prefix=/home/test/opensource/curl-8.2.1/output/arm-buildroot-linux-uclibcgnueabihf --enable-static
-```
-
 # openssl
 ```
 wget https://www.openssl.org/source/openssl-3.0.0.tar.gz
@@ -60,3 +58,15 @@ make install
 ```
 
 如果编译出现 -m64错误，删除Makefile中全部 -m64即可
+
+# curl
+1. no ssl
+
+```
+./configure --host=arm-linux CC=arm-buildroot-linux-uclibcgnueabihf-gcc --without-ssl --without-zlib --prefix=/home/test/opensource/curl-8.2.1/output/arm-buildroot-linux-uclibcgnueabihf --enable-static
+```
+2. with ssl
+```
+# 1109/1126
+./configure --host=arm-linux-gnueabihf --prefix=/home/test/opensource/curl/11091126 --with-ssl=/home/test/opensource/openssl/11091126 CC=/opt/rockchip/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc AR=arm-linux-gnueabihf-ar RANLIB=arm-linux-gnueabihf-ranlib
+```
